@@ -12,7 +12,7 @@
       v-model="post.body"
       placeholder="body post"
     />
-    <button class="btn" @click.prevent="createPost">Add Post</button>
+    <button-component class="btn" @click.prevent="createPost">Add Post</button-component>
   </form>
 </template>
 
@@ -49,15 +49,5 @@ export default {
   height: 25px;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.btn {
-  outline: none;
-  border: none;
-  background: none;
-  padding: 13.5px 25px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  cursor: pointer;
 }
 </style>

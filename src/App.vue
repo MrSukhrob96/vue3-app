@@ -16,9 +16,9 @@ export default {
   data() {
     return {
       posts: [
-        { id: 1, title: "Javascript", body: "js js js js" },
-        { id: 2, title: "Javascript", body: "js js js js" },
-        { id: 3, title: "Javascript", body: "js js js js" },
+        { id: 1, title: "Javascript", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi" },
+        { id: 2, title: "Javascript", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi" },
+        { id: 3, title: "Javascript", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi" },
       ],
     };
   },

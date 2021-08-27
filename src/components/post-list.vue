@@ -10,7 +10,7 @@ export default {
   },
   props: {
     posts: {
-      typeof: Array,
+      type: Array,
       required: true,
     },
   },
