@@ -1,7 +1,16 @@
 <template>
   <div class="container">
-    <post-form @create="addPost" />
-    <post-list :posts="posts" />
+    <button-component class="btn" @click="showDialog">Add Post</button-component>
+    <dialog-form-component v-model:show="modalVissable">
+      <post-form @create="addPost" :edit="post" />
+    </dialog-form-component>
+    <post-list
+      :posts="posts"
+      @remove="removePost"
+      @edit="editPost"
+      v-if="posts.length > 0"
+    />
+    <h4 v-else>Posts not found</h4>
   </div>
 </template>
 <script>
@@ -16,21 +25,56 @@ export default {
   data() {
     return {
       posts: [
-        { id: 1, title: "Javascript", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi" },
-        { id: 2, title: "Javascript", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi" },
-        { id: 3, title: "Javascript", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi" },
+        {
+          id: 1,
+          title: "Javascript",
+          body:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi",
+        },
+        {
+          id: 2,
+          title: "Javascript",
+          body:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi",
+        },
+        {
+          id: 3,
+          title: "Javascript",
+          body:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed animi",
+        },
       ],
+      post: {},
+      modalVissable: false,
     };
+  },
+  computed:{
+    getLastIdPosts(){
+      if(this.posts.length > 0){
+          return this.posts[this.posts.length - 1].id
+      }
+      return 0;
+    }
   },
   methods: {
     addPost(post) {
       this.posts.push({
-        id: this.posts[this.posts.length - 1].id + 1,
+        id: this.getLastIdPosts + 1,
         title: post.title,
         body: post.body,
       });
 
       this.title = this.body = "";
+      this.modalVissable = false;
+    },
+    removePost(post) {
+      this.posts = this.posts.filter((p) => p.id !== post.id);
+    },
+    editPost(post) {
+      this.post = this.posts.find((p) => p.id == post.id);
+    },
+    showDialog(show) {
+      this.modalVissable = true;
     },
   },
 };

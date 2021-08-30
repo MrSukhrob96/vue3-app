@@ -6,8 +6,8 @@
         <div class="post__body">{{ post.body }}</div>
       </div>
       <div class="post__item post_action">
-        <button-component>EDIT</button-component>
-        <button-component>DELETE</button-component>
+        <button-component @click="$emit('remove', post)">DELETE</button-component>
+        <button-component @click="$emit('edit', post)">EDIT</button-component>
       </div>
     </div>
   </div>

@@ -1,23 +1,18 @@
 <template>
   <form action="" class="posts-form">
-    <input
-      type="text"
-      class="txt"
-      v-model="post.title"
-      placeholder="title post"
-    />
-    <input
-      type="text"
-      class="txt"
-      v-model="post.body"
-      placeholder="body post"
-    />
+    <input-component v-model:value="post.title" v-model:edit="post.title"  />
+    <input-component v-model:value="post.body" v-model:edit="post.body" />
     <button-component class="btn" @click.prevent="createPost">Add Post</button-component>
   </form>
 </template>
 
 <script>
 export default {
+  props: {
+    post: {
+      type: Object,
+    },
+  },
   data() {
     return {
       post: {
@@ -36,18 +31,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .posts-form {
-  max-width: 600px;
   width: 100%;
   padding: 3rem;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
   margin: 30px auto;
-}
-
-.txt {
-  width: 100%;
-  margin-bottom: 15px;
-  height: 25px;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
